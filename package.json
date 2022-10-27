@@ -1,5 +1,5 @@
 {
-    "name": "@nrey/storybook-addon-preview",
+    "name": "@n_rey/storybook-addon-preview",
     "version": "1.0.0",
     "description": "Storybook Addon Preview can show user selected knobs in various framework code in Storybook",
     "main": "./dist/index.js",
