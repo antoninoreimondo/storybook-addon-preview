@@ -5,52 +5,55 @@
 import * as React from "react";
 
 function copyText(text, copyInput) {
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(() => {
-            alert("You have copied the code.");
-        }).catch(() => {
-            copyTextarea(text, copyInput);
-        });
-    } else {
-        copyTextarea(text, copyInput);
-    }
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).catch(() => {
+      copyTextarea(text, copyInput);
+    });
+  } else {
+    copyTextarea(text, copyInput);
+  }
 }
 function copyTextarea(text: string, copyInput: HTMLTextAreaElement) {
-    const range = document.createRange();
+  const range = document.createRange();
 
-    copyInput.value = text;
-    range.selectNodeContents(copyInput);
+  copyInput.value = text;
+  range.selectNodeContents(copyInput);
 
-    const selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-    // A big number, to cover anything that could be inside the element.
-    copyInput.setSelectionRange(0, copyInput.value.length);
-    copyInput.focus();
-    document.execCommand('copy');
-    alert("You have copied the code.");
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+  // A big number, to cover anything that could be inside the element.
+  copyInput.setSelectionRange(0, copyInput.value.length);
+  copyInput.focus();
+  document.execCommand("copy");
 }
 
-export default function CopyButton({ tab, index, onCopyText }: {
-    tab: number;
-    index: number;
-    onCopyText: (tab: number, index: number) => string;
+export default function CopyButton({
+  tab,
+  index,
+  onCopyText,
+}: {
+  tab: number;
+  index: number;
+  onCopyText: (tab: number, index: number) => string;
 }) {
-    const textareaRef = React.useRef();
-    const onClick = React.useCallback(() => {
-        const text = onCopyText(tab, index);
+  const textareaRef = React.useRef();
+  const onClick = React.useCallback(() => {
+    const text = onCopyText(tab, index);
 
-        if (!text) {
-            return;
-        }
+    if (!text) {
+      return;
+    }
 
-        copyText(text, textareaRef.current);
-    }, [tab, index, onCopyText]);
-    const onSelect = React.useCallback(() => {
-        document.execCommand('copy');
-    }, []);
-    return (<button className="preview-copy" onClick={onClick}>
-        Copy
-        <textarea ref={textareaRef} onSelect={onSelect}></textarea>
-    </button>);
+    copyText(text, textareaRef.current);
+  }, [tab, index, onCopyText]);
+  const onSelect = React.useCallback(() => {
+    document.execCommand("copy");
+  }, []);
+  return (
+    <button className="preview-copy" onClick={onClick}>
+      Copy
+      <textarea ref={textareaRef} onSelect={onSelect}></textarea>
+    </button>
+  );
 }
