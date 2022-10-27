@@ -3,83 +3,111 @@
  * egjs projects are licensed under the MIT license
  */
 
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  border: 8px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bec0c1;
+  border-radius: 100px;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
 .preview-tabs {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .panel {
-    position: relative;
-    margin-top: 5px;
+  position: relative;
+  margin-top: 5px;
 }
 
 .panel .code-description {
-    padding: 7px 16px 9px;
-    font-weight: bold;
+  padding: 7px 16px 9px;
+  font-weight: bold;
 }
 
 .panel form {
-    z-index: 1000;
-    position: absolute;
-    top: 0;
-    right: 0;
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .panel form [type="submit"],
 .panel .preview-copy {
-    position: absolute;
-    right: 15px;
-    top: 0px;
-    padding: 11px 13px;
-    font-size: 12px;
-    background: #000;
-    border: 0;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 5px;
-    z-index: 1000;
-    cursor: pointer;
-    overflow: hidden;
+  position: absolute;
+  right: 15px;
+  top: 0px;
+  padding: 11px 13px;
+  font-size: 12px;
+  background: #004c97;
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  z-index: 1000;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.panel .preview-copy:hover {
+  background: #033a7c;
+}
+
+.panel .preview-copy:active {
+  background: #0e2852;
 }
 
 .panel .preview-copy textarea {
-    position: absolute;
-    right: 100%;
+  position: absolute;
+  right: 100%;
 }
 
 .panel .code-preview {
-    position: relative;
+  position: relative;
 }
 
 .panel .code-preview .line-highlight {
-    margin-top: 0;
+  margin-top: 0;
 }
 
-.panel form+.code-preview>.preview-copy {
-    right: 130px;
+.panel form + .code-preview > .preview-copy {
+  right: 130px;
 }
 
-.panel .code-preview>pre {
-    margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+.panel .code-preview > pre {
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .no-preview {
-    padding: 30px;
-    text-align: center;
+  padding: 30px;
+  text-align: center;
 }
 
 .no-preview-title {
-    font-size: 13px;
-    font-weight: bold;
-    margin: 0;
-    padding: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0;
+  padding: 5px;
 }
 
 .no-preview-description {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 .no-preview-description a {
-    color: #4af;
+  color: #4af;
 }

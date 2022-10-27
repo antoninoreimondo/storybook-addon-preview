@@ -2,16 +2,6 @@
  * Copyright (c) 2020-present NAVER Corp.
  * egjs projects are licensed under the MIT license
  */
-export interface CodeSandboxValue {
-    template?: string;
-    scripts?: Record<string, any>;
-    files: FilesParam;
-    dependencies?: Record<string, string>;
-    devDependencies?: Record<string, string>;
-    userDependencies?: string[];
-}
-export type CodeSandboxTemplate = (userDependencies?: string[], files?: FilesParam) => CodeSandboxValue;
-
 export type FilesParam = Record<string, string | CodeFileTab | null>;
 export interface CodeFileTab {
     tab: string;
@@ -27,9 +17,9 @@ export interface ObjectType {
     endSeparator?: string;
 }
 export interface OptionsType extends ObjectType {
-    template?: (name: string, index: number) => any[],
-    prefix?: string,
-    suffix?: string,
+    template?: (name: string, index: number) => any[];
+    prefix?: string;
+    suffix?: string;
 }
 
 export interface PropsOptions {
